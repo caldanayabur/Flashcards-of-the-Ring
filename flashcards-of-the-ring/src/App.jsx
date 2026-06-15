@@ -1,47 +1,85 @@
 import { useState } from 'react';
 import './App.css';
 import Flashcard from './Flashcard';
+import gollumImage from './assets/Gollum.jpg';
+import smeagolImage from './assets/Smeagol.jpg';
+import frodoImage from './assets/Frodo.png';
+import oneRingImage from './assets/One-Ring.png';
+import andurilImage from './assets/Anduril.png';
+import aragornImage from './assets/Aragorn.jpg';
+import elvenRingsImage from './assets/Three_Rings.jpg';
+import mirkwoodImage from './assets/Mirkwood.png';
+import legolasImage from './assets/Legolas.png';
+import gandalfImage from './assets/Gandalf.png';
+import arwenImage from './assets/Arwen.png';
+import arwenAltImage from './assets/Arwen2.png';
+import mountDoomImage from './assets/Mount_Doom.png';
+import oneRingAltImage from './assets/One-Ring2.png';
+import shireImage from './assets/The-Shire.jpeg';
+import hobbitsImage from './assets/Hobbits.jpg';
+import pippinSongImage from './assets/Pippin-Song.jpg';
+import edgeOfNightImage from './assets/The-Edge-Of-Night.jpg';
 
 const cardPairs = [
   {
     question: 'What creature is Gollum?',
     answer: 'He is a Stoor Hobbit who was corrupted by the One Ring.',
+    questionImage: gollumImage,
+    answerImage: smeagolImage,
   },
   {
     question: 'Who carries the One Ring to Mordor?',
     answer: 'Frodo Baggins.',
+    questionImage: oneRingImage,
+    answerImage: frodoImage,
   },
   {
     question: 'What is the name of Aragorn’s sword?',
     answer: 'Andúril, Flame of the West.',
+    questionImage: aragornImage,
+    answerImage: andurilImage,
   },
   {
     question: 'What are the Elves’ three Rings called?',
     answer: 'Narya, Nenya, and Vilya.',
+    questionImage: elvenRingsImage,
+    answerImage: elvenRingsImage,
   },
   {
-    question: 'What is Gandalf the Grey’s horse called in Rohan?',
-    answer: 'Shadowfax.',
+    question: 'Where is Legolas from?',
+    answer: 'Mirkwood.',
+    questionImage: legolasImage,
+    answerImage: mirkwoodImage,
   },
   {
-    question: 'Who is the Lord of the Nazgûl?',
-    answer: 'The Witch-king of Angmar.',
+    question: 'What do the Elves call Gandalf?',
+    answer: 'Mithrandir.',
+    questionImage: gandalfImage,
+    answerImage: gandalfImage,
   },
   {
-    question: 'What does “Mellon” mean in Elvish?',
-    answer: 'Friend.',
+    question: 'What does Arwen mean in Elvish?',
+    answer: 'Noble Maiden.',
+    questionImage: arwenImage,
+    answerImage: arwenAltImage,
   },
   {
     question: 'Where is the One Ring destroyed?',
     answer: 'In the fires of Mount Doom.',
+    questionImage: oneRingAltImage,
+    answerImage: mountDoomImage,
   },
   {
     question: 'What is the home of the Hobbits called?',
     answer: 'The Shire.',
+    questionImage: hobbitsImage,
+    answerImage: shireImage,
   },
   {
-    question: 'Who forges the Rings of Power with Celebrimbor?',
-    answer: 'Sauron, disguised as Annatar.',
+    question: 'What song is sung by Pippin in Minas Tirith while Faramir rides out to defend his city?',
+    answer: 'The Edge of Night.',
+    questionImage: pippinSongImage,
+    answerImage: edgeOfNightImage,
   },
 ];
 
