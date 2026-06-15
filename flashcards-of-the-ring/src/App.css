@@ -51,6 +51,37 @@
   margin: 0 auto;
 }
 
+/* ── Category theming via CSS variables ───────────────────────── */
+
+.flip-card--characters {
+  --accent-color: #5a3a9e;
+  --accent-bg: rgba(130, 90, 255, 0.15);
+  --front-top: #f7f3ff;
+  --front-bottom: #e8d9f8;
+  --back-top: #3d2845;
+  --back-bottom: #231630;
+}
+
+.flip-card--artifacts {
+  --accent-color: #7a5a08;
+  --accent-bg: rgba(210, 155, 20, 0.18);
+  --front-top: #fffdf0;
+  --front-bottom: #f5e5b8;
+  --back-top: #4a3818;
+  --back-bottom: #2d2008;
+}
+
+.flip-card--places {
+  --accent-color: #236030;
+  --accent-bg: rgba(52, 140, 72, 0.18);
+  --front-top: #f2faf4;
+  --front-bottom: #cfe8d5;
+  --back-top: #1e3d28;
+  --back-bottom: #0f2518;
+}
+
+/* ── Card layout ──────────────────────────────────────────────── */
+
 .flip-card {
   width: min(100%, 460px);
   min-height: 360px;
@@ -89,15 +120,20 @@
 
 .flip-card-front {
   align-items: center;
-}
-
-.flip-card-front {
-  background: linear-gradient(180deg, #fffaf2 0%, #f3e5cf 100%);
+  background: linear-gradient(
+    180deg,
+    var(--front-top, #fffaf2) 0%,
+    var(--front-bottom, #f3e5cf) 100%
+  );
 }
 
 .flip-card-back {
   align-items: center;
-  background: linear-gradient(180deg, #4c392d 0%, #2f2118 100%);
+  background: linear-gradient(
+    180deg,
+    var(--back-top, #4c392d) 0%,
+    var(--back-bottom, #2f2118) 100%
+  );
   color: #fff8ef;
   transform: rotateY(180deg);
 }
@@ -142,23 +178,47 @@
   text-align: center;
 }
 
+/* ── Badges ───────────────────────────────────────────────────── */
+
+.card-meta {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
 .card-number {
   display: inline-flex;
   align-self: flex-start;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(143, 98, 254, 0.12);
-  color: #7a4f12;
+  background: var(--accent-bg, rgba(143, 98, 254, 0.12));
+  color: var(--accent-color, #7a4f12);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
+.card-category {
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-bg, rgba(143, 98, 254, 0.08));
+  color: var(--accent-color, #7a4f12);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: capitalize;
+  opacity: 0.75;
+}
+
 .flip-card-back .card-number {
   background: rgba(255, 248, 239, 0.12);
   color: #f9d9ae;
 }
+
+/* ── Next button ──────────────────────────────────────────────── */
 
 .next-button {
   appearance: none;

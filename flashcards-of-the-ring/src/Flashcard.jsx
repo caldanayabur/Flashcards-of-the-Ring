@@ -1,12 +1,15 @@
 function Flashcard({ card, isFlipped, onFlip, cardNumber }) {
   return (
     <article
-      className={`flip-card ${isFlipped ? 'flipped' : ''}`}
+      className={`flip-card flip-card--${card.category} ${isFlipped ? 'flipped' : ''}`}
       onClick={onFlip}
     >
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          <span className="card-number">Card {cardNumber}</span>
+          <div className="card-meta">
+            <span className="card-number">Card {cardNumber}</span>
+            <span className="card-category">{card.category}</span>
+          </div>
           <div className="card-image-wrap">
             <img className="card-image" src={card.questionImage} alt={card.question} />
           </div>
