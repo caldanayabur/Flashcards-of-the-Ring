@@ -218,9 +218,15 @@
   color: #f9d9ae;
 }
 
-/* ── Next button ──────────────────────────────────────────────── */
+/* ── Nav buttons ──────────────────────────────────────────────── */
 
-.next-button {
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.nav-buttons button {
   appearance: none;
   border: 0;
   border-radius: 999px;
@@ -238,13 +244,18 @@
     background-color 0.2s ease;
 }
 
-.next-button:hover {
+.nav-buttons button:hover:not(:disabled) {
   transform: translateY(-1px);
   background: #3c2a1f;
   box-shadow: 0 16px 28px rgba(47, 33, 24, 0.22);
 }
 
-.next-button:focus-visible,
+.nav-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.nav-buttons button:focus-visible,
 .flip-card:focus-visible {
   outline: 3px solid rgba(143, 98, 254, 0.45);
   outline-offset: 4px;
@@ -280,7 +291,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .flip-card-inner,
-  .next-button {
+  .nav-buttons button {
     transition: none;
   }
 }

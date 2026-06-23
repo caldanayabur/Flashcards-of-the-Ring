@@ -93,33 +93,44 @@ const cardPairs = [
   },
 ];
 
-function getRandomIndex(currentIndex, length) {
-  if (length === 1) return 0;
-
-  let randomIndex = Math.floor(Math.random() * length);
-
-  while (randomIndex === currentIndex) {
-    randomIndex = Math.floor(Math.random() * length);
-  }
-
-  return randomIndex;
-}
-
 const App = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [order, setOrder] = useState(cardPairs.map((_,i) => i));
+  const [position, setPosition] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [guess, setGuess] = useState('');
   const [result, setResult] = useState(null);
 
-  const currentCard = cardPairs[currentIndex];
+  const currentCard = cardPairs[order[position]];
+
+  const isFirst = position === 0;
+  const isLast = position === cardPairs.length - 1;
 
   const handleFlip = () => {
     setIsFlipped((prev) => !prev);
   };
 
-  const handleNextCard = () => {
-    const newIndex = getRandomIndex(currentIndex, cardPairs.length);
-    setCurrentIndex(newIndex);
+  const handleNext = () => {
+    setPosition((p) => p + 1);
+    setIsFlipped(false);
+    setGuess('');
+    setResult(null);
+  };
+
+  const handleBack = () => {
+    setPosition((p) => p - 1);
+    setIsFlipped(false);
+    setGuess('');
+    setResult(null);
+  };
+
+  const handleShuffle = () => {
+    const shuffled = [...order];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setOrder(shuffled);
+    setPosition(0);
     setIsFlipped(false);
     setGuess('');
     setResult(null);
@@ -146,7 +157,7 @@ const App = () => {
           card={currentCard}
           isFlipped={isFlipped}
           onFlip={handleFlip}
-          cardNumber={currentIndex + 1}
+          cardNumber={position + 1}
         />
 
         {!isFlipped && (
@@ -163,9 +174,11 @@ const App = () => {
           </div>
         )}
 
-        <button className="next-button" onClick={handleNextCard}>
-          Next Random Card
-        </button>
+        <div className="nav-buttons">
+          <button onClick={handleBack} disabled={isFirst}>← Back</button>
+          <button onClick={handleShuffle}>Shuffle</button>
+          <button onClick={handleNext} disabled={isLast}>Next →</button>
+        </div>
       </section>
     </main>
   );
