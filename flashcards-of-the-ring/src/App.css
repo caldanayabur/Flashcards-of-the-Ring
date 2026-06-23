@@ -274,6 +274,10 @@
   }
 }
 
+.feedback.correct  { color: green; font-weight: bold; }
+.feedback.incorrect { color: red;  font-weight: bold; }
+
+
 @media (prefers-reduced-motion: reduce) {
   .flip-card-inner,
   .next-button {
