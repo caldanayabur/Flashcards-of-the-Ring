@@ -99,6 +99,8 @@ const App = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [guess, setGuess] = useState('');
   const [result, setResult] = useState(null);
+  const [currentStreak, setCurrentStreak] = useState(0);
+  const [longestStreak, setLongestStreak] = useState(0);
 
   const currentCard = cardPairs[order[position]];
 
@@ -114,6 +116,7 @@ const App = () => {
     setIsFlipped(false);
     setGuess('');
     setResult(null);
+    setCurrentStreak(0);
   };
 
   const handleBack = () => {
@@ -121,6 +124,7 @@ const App = () => {
     setIsFlipped(false);
     setGuess('');
     setResult(null);
+    setCurrentStreak(0);
   };
 
   const handleShuffle = () => {
@@ -137,7 +141,18 @@ const App = () => {
   };
 
   const handleGuessSubmit = () => {
-    setResult(checkGuess(guess, currentCard.answer) ? 'correct' : 'incorrect');
+    const isCorrect = checkGuess(guess, currentCard.answer);
+    setResult(isCorrect ? 'correct' : 'incorrect');
+    
+    if (isCorrect) {
+      const newStreak = currentStreak + 1;
+      setCurrentStreak(newStreak);
+      if (newStreak > longestStreak) {
+        setLongestStreak(newStreak);
+      }
+    } else {
+      setCurrentStreak(0);
+    }
   };
 
   return (
@@ -150,6 +165,10 @@ const App = () => {
           Lord of the Rings themed deck.
         </p>
         <p className="card-count">Number of Cards: {cardPairs.length}</p>
+        <p className= "streak-display">
+          🔥 Current Streak: {currentStreak} &nbsp;|&nbsp; Best: {longestStreak}
+
+        </p>
       </header>
 
       <section className="single-card-section" aria-label="Flashcard viewer">
