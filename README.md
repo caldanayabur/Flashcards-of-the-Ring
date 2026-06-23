@@ -52,8 +52,10 @@ https://github.com/user-attachments/assets/13483af5-8123-44b2-8f87-e8923fda5b4f
 
 Part 2:
 
+https://github.com/user-attachments/assets/2b1ec826-c0a3-4944-bdb2-54cfdde5a7cf
+
 <!-- Replace this with whatever GIF tool you used! -->
-Video created with Clipchamp.  
+Videos created with Clipchamp.  
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
